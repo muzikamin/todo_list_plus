@@ -5,7 +5,11 @@ import { Container } from "@chakra-ui/react";
 const App = () => {
   const loginState = localStorage.getItem("login");
 
-  return <Container>{loginState ? <Main /> : <SignUp />}</Container>;
+  return (
+    <Container minH="calc(100vh - 140px)">
+      {loginState ? <Main /> : <SignUp />}
+    </Container>
+  );
 };
 
 export default App;

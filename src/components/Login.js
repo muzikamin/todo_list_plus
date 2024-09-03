@@ -1,10 +1,21 @@
-import { Box, Button, Container, Input, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Input,
+  Text,
+  useColorMode,
+  VStack,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 export const LogIn = () => {
   const navigate = useNavigate();
+
+  const { colorMode } = useColorMode(); //차크라에서 제공하는 훅
+  const isDark = colorMode === "light" ? "#Bce3ec" : "#5988D5";
 
   const {
     register,
@@ -28,7 +39,7 @@ export const LogIn = () => {
   };
 
   return (
-    <Container maxW="450px" h="100%" maxH="100vh" bg="skyblue">
+    <Container maxW="450px" minH="calc(100vh - 140px)" maxH="100vh">
       <VStack width="100%" padding="10px">
         <Text fontSize="24px" padding="20px" fontWeight="700">
           로그인
@@ -66,15 +77,11 @@ export const LogIn = () => {
           />
           <Text padding="10px 0">{loginText}</Text>
           <Button
+            bg={isDark}
             margin="20px 0"
             height="50px"
             width="100%"
             type="submit"
-            style={{
-              backgroundColor: isValid ? "#5988D5" : "#fff",
-              color: isValid ? "#fff" : "",
-              border: "1px solid #5988D5",
-            }}
           >
             로그인
           </Button>
