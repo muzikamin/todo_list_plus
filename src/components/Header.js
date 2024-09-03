@@ -1,10 +1,14 @@
-import { Container, Text } from "@chakra-ui/react";
+import { Box, Container, Text, useColorMode } from "@chakra-ui/react";
+import { LiaToggleOffSolid, LiaToggleOnSolid } from "react-icons/lia";
 import { RiLoginCircleLine, RiLogoutCircleLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const loginState = localStorage.getItem("login");
   const navigate = useNavigate();
+
+  const { colorMode, toggleColorMode } = useColorMode(); //차크라에서 제공하는 훅
+  const isDark = colorMode === "light" ? "#ebf7f9" : "gray.700";
 
   const logoutHandler = () => {
     localStorage.removeItem("username");
@@ -21,18 +25,22 @@ export const Header = () => {
       display="flex"
       justifyContent="space-between"
       maxW="450px"
-      maxH="100%"
       height="70px"
-      bg="red"
+      bgColor={isDark}
       padding="0 25px"
       alignItems="center"
     >
-      <Text>흐앙</Text>
+      <Box onClick={toggleColorMode}>
+        {colorMode === "light" ? (
+          <LiaToggleOffSolid fontSize="30px" />
+        ) : (
+          <LiaToggleOnSolid fontSize="30px" />
+        )}
+      </Box>
       <Link to={"/"}>
         <Text
           fontSize="32px"
           fontWeight="700"
-          color="#333"
           textAlign="center"
           lineHeight="70px"
         >

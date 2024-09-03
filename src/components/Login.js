@@ -28,7 +28,7 @@ export const LogIn = () => {
   };
 
   return (
-    <Container>
+    <Container maxW="450px" h="100%" maxH="100vh" bg="skyblue">
       <VStack width="100%" padding="10px">
         <Text fontSize="24px" padding="20px" fontWeight="700">
           로그인
@@ -36,6 +36,7 @@ export const LogIn = () => {
         <Box as="form" width="90%" onSubmit={handleSubmit(loginHandler)}>
           <Text padding="10px 0">{errors?.name?.message}</Text>
           <Input
+            marginBottom="15px"
             height="50px"
             width="100%"
             variant="filled"
@@ -72,6 +73,7 @@ export const LogIn = () => {
             style={{
               backgroundColor: isValid ? "#5988D5" : "#fff",
               color: isValid ? "#fff" : "",
+              border: "1px solid #5988D5",
             }}
           >
             로그인

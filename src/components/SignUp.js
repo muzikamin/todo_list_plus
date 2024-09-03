@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Input,
-  InputGroup,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Button, Container, Input, Text, VStack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -30,7 +22,7 @@ export const SignUp = () => {
   };
 
   return (
-    <Container>
+    <Container maxW="450px" maxH="100vh" bg="skyblue">
       <VStack width="100%" padding="10px">
         <Text fontSize="24px" padding="20px" fontWeight="700">
           회원가입

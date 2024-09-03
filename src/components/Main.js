@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { calc, Container } from "@chakra-ui/react";
 import { Todo } from "./Todo";
 import { useEffect, useState } from "react";
 import { TextTodo } from "./TextTodo";
@@ -14,9 +14,9 @@ export const Main = () => {
   }, [todos]);
 
   return (
-    <Container>
+    <Container w="100%" maxW="450px" minH="calc(100vh - 140px)">
       <TextTodo todos={todos} setTodos={setTodos} />
-      <Todo />
+      <Todo todos={todos} setTodos={setTodos} />
     </Container>
   );
 };

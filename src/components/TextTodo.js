@@ -1,8 +1,13 @@
-import { Box, Input } from "@chakra-ui/react";
+import { Box, Heading, Input, VStack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
 export const TextTodo = ({ todos, setTodos }) => {
-  const { register, handleSubmit } = useForm();
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDay() + 1;
+
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const { todo: text } = data;
@@ -12,20 +17,25 @@ export const TextTodo = ({ todos, setTodos }) => {
         id: Date.now(),
         title: text,
         finish: false,
+        date: `${year}년 ${month}월 ${day}일`,
       },
     ]);
+
+    reset();
   };
 
   return (
-    <div>
-      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+    <VStack w="100%" maxW="450px">
+      <Box w="100%" as="form" onSubmit={handleSubmit(onSubmit)}>
         <Input
+          m="30px 0"
+          h="50px"
           {...register("todo", {
-            required: "빈 내용은 안 돼요~",
+            required: "내용을 입력해주세요.",
           })}
-          placeholder="무엇을 해야하나요?"
+          placeholder="Fill Your To-Do List!"
         />
       </Box>
-    </div>
+    </VStack>
   );
 };
